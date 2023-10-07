@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django_project.views import bookview
+from django_project.views import chatview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('books/', bookview.book_list, name='book_list'),
+    path('chatagent/', chatview.chat, name='chat'),
+    path('post_message/', chatview.post_message, name='post_message'),
 ]

@@ -1,0 +1,28 @@
+<!-- mychatapp/templates/chat.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Interface</title>
+    <style>
+        /* Add your CSS styles for the chat interface here */
+    </style>
+</head>
+<body>
+    <div id="chat">
+        {% for message in messages %}
+            <div class="message">
+                <strong>{{ message.user }}:</strong> {{ message.message }}
+            </div>
+            <div class="response">
+                <strong>Chat Agent:</strong> {{ message.response }}
+            </div>
+        {% endfor %}
+    </div>
+    <form action="{% url 'post_message' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="user" placeholder="Your Name">
+        <input type="text" name="message" placeholder="Type your message here">
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
